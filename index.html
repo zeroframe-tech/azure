@@ -1,48 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Command Reference</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
-  <style>
-    .markdown-body {
-      box-sizing: border-box;
-      min-width: 200px;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 45px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <article class="markdown-body" id="content">
-    <!-- Content will be loaded here -->
-  </article>
-  
+  <div class="header">
+    <h1>📋 Command Reference</h1>
+    <input type="text" class="search-box" id="search" placeholder="🔍 Search commands...">
+  </div>
+
+  <div id="content"></div>
+
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
+    // Load and render markdown
     fetch('commands.md')
       .then(response => response.text())
       .then(text => {
         document.getElementById('content').innerHTML = marked.parse(text);
+        setupSearch();
+        addCopyButtons();
+        addCategoryFilter();
       });
-  </script>
 
-<input type="text" id="search" placeholder="Search commands...">
-<script>
-  document.getElementById('search').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
-    const rows = document.querySelectorAll('tr');
+    // Enhanced search functionality
+    function setupSearch() {
+      const searchInput = document.getElementById('search');
+      
+      searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const rows = document.querySelectorAll('tbody tr');
+        
+        rows.forEach(row => {
+          const rowText = row.textContent.toLowerCase();
+          row.style.display = rowText.includes(searchTerm) ? '' : 'none';
+        });
+      });
+    }
+
+    // Add copy buttons to code blocks
+    function addCopyButtons() {
+      const codeBlocks = document.querySelectorAll('code');
+      
+      codeBlocks.forEach(code => {
+        const button = document.createElement('button');
+        button.className = 'copy-btn';
+        button.innerHTML = '<i class="far fa-copy"></i>';
+        button.title = 'Copy to clipboard';
+        
+        button.addEventListener('click', () => {
+          navigator.clipboard.writeText(code.textContent)
+            .then(() => {
+              button.innerHTML = '<i class="fas fa-check"></i>';
+              setTimeout(() => {
+                button.innerHTML = '<i class="far fa-copy"></i>';
+              }, 2000);
+            });
+        });
+        
+        code.parentNode.insertBefore(button, code.nextSibling);
+      });
+    }
+
+    // Category filter function
+    function addCategoryFilter() {
+      const table = document.querySelector('table');
+      if (!table) return;
+      
+      const categoryCells = Array.from(document.querySelectorAll('td:nth-child(4)'));
+      const categories = [...new Set(categoryCells.map(cell => cell.textContent.trim()))];
+      
+      if (categories.length < 2) return; // Only add filter if multiple categories exist
+      
+      const filterHtml = `
+        <div class="category-filter">
+          <label>Filter by category:</label>
+          <select id="categoryFilter">
+            <option value="">All Categories</option>
+            ${categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
+          </select>
+        </div>
+      `;
+      
+      table.insertAdjacentHTML('beforebegin', filterHtml);
+      
+      document.getElementById('categoryFilter').addEventListener('change', function() {
+        const selectedCategory = this.value;
+        const rows = document.querySelectorAll('tbody tr');
+        
+        rows.forEach(row => {
+          const rowCategory = row.querySelector('td:nth-child(4)').textContent.trim();
+          if (!selectedCategory || rowCategory === selectedCategory) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    // Dark mode toggle
+    const themeToggle = document.getElementById('themeToggle');
     
-    rows.forEach(row => {
-      if (row.textContent.toLowerCase().includes(searchTerm)) {
-        row.style.display = '';
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const icon = themeToggle.querySelector('i');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
       } else {
-        row.style.display = 'none';
+        icon.classList.replace('fa-sun', 'fa-moon');
       }
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
