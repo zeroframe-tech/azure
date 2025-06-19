@@ -22,14 +22,15 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     // Load and render markdown
-    fetch('commands.md')
-      .then(response => response.text())
-      .then(text => {
-        document.getElementById('content').innerHTML = marked.parse(text);
-        setupSearch();
-        addCopyButtons();
-        addCategoryFilter();
-      });
+fetch('commands.md')
+  .then(response => response.text())
+  .then(text => {
+    // Remove Jekyll front matter if present
+    const cleanedText = text.replace(/^---[\s\S]*?---/, '');
+    document.getElementById('content').innerHTML = marked.parse(cleanedText);
+    setupSearch();
+    addCopyButtons();
+  });
 
     // Enhanced search functionality
     function setupSearch() {
