@@ -42,7 +42,7 @@ azvmshow|GetVMdetails|azvmshow--resource-groupMyRG--nameMyVM
 azstorageaccountcreateCreateastorageaccount|azstorageaccountcreate--namemystorageacc--resource-groupMyRG--locationeastus--skuStandard_LRS	
 azstorageaccountlistListstorageaccounts|azstorageaccountlist--resource-groupMyRG--outputtable	
 azstoragecontainercreateCreateablobcontainer|azstoragecontainercreate--account-namemystorageacc--namemycontainer|	
-azstorageblobuploadUploadafiletoblobstorageazstorageblobupload--account-namemystorageacc--container-namemycontainer--namemyfile.txt--file./local-file.txt|	
+azstorageblobuploadUploadafiletoblobstorageazstorageblobupload--account-namemystorageacc--container-namemycontainer--namemyfile.txt--file./local-file.txt|
 azstorageblobdownloadDownloadablob|azstorageblobdownload--account-namemystorageacc--container-namemycontainer--namemyfile.txt--file./downloaded-file.txt|	
 	
 5.Networking(VNet,NSG,PublicIP,NIC)	
