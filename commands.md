@@ -1,4 +1,9 @@
-	 1. Azure Account &amp; Subscription Management                                        	                                                  	                                                                                                                                                             	
+	---
+layout: default
+title: Command Reference
+--- 
+
+1. Azure Account &amp; Subscription Management                                        	                                                  	                                                                                                                                                             	
 	---------------------------------------------------------------------------------------	--------------------------------------------------	-------------------------------------------------------------------------------------------------------------------------------------------------------------	
 	 Cpmmand                                                                               	 Description                                      	 Example                                                                                                                                                     	
 	  az login                                                                             	  Log in to Azure                                 	  az login                                                                                                                                                   	
