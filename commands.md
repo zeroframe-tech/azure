@@ -1,97 +1,97 @@
 
 ---
-layout: default
-title: Command Reference
+layout:default
+title:CommandReference
 ---
-# Command Reference
+#CommandReference
 
 
 
-1. Azure Account &amp; Subscription Management                                                                                                                                                                                                                                                   	
-| Command | Description | Example |
+1.AzureAccount&amp;SubscriptionManagement	
+|Command|Description|Example|
 |---------|-------------|---------|	
-az login                                                                             Log in to Azure                                 az login                                                                                                                                                   	
-az logout                                                                            Log out from Azure                              az logout                                                                                                                                                  	
-az account list                                                                      List all subscriptions                          az account list --output table                                                                                                                             	
-az account set                                                                       Set active subscription                         az account set --subscription "My Subscription"                                                                                                            	
-az account show                                                                      Show current subscription details               az account show                                                                                                                                            	
-                                                                                                                                                                                                                                                                                                	
-2. Resource Group Management                                                                                                                                                                                                                                                                     	
-| Command | Description | Example |
-|---------|-------------|---------|                                                                                                                                                     	
-az group create                                                                      Create a resource group                         az group create --name MyRG --location eastus                                                                                                              	
-az group list                                                                        List all resource groups                        az group list --output table                                                                                                                               	
-az group delete                                                                      Delete a resource group                         az group delete --name MyRG --yes                                                                                                                          	
-az group show                                                                        Show details of a resource group                az group show --name MyRG                                                                                                                                  	
-                                                                                                                                                                                                                                                                                                	
-3. VM Cpmmand                                                                                                                                                                                                                                                                                    	
-| Command | Description | Example |
-|---------|-------------|---------|                                                                                                                                                    	
-az vm create                                                                         Create a VM                                     az vm create --resource-group MyRG --name MyVM --image UbuntuLTS --admin-username azureuser --generate-ssh-keys                                            	
-az vm list                                                                           List all VMs                                    az vm list --output table                                                                                                                                  	
-az vm start                                                                          Start a VM                                      az vm start --resource-group MyRG --name MyVM                                                                                                              	
-az vm stop                                                                           Stop a VM                                       az vm stop --resource-group MyRG --name MyVM                                                                                                               	
-az vm deallocate                                                                     Deallocate a VM (stop &amp; release resources)  az vm deallocate --resource-group MyRG --name MyVM                                                                                                         	
-az vm restart                                                                        Restart a VM                                    az vm restart --resource-group MyRG --name MyVM                                                                                                            	
-az vm delete                                                                         Delete a VM                                     az vm delete --resource-group MyRG --name MyVM --yes                                                                                                       	
-az vm show                                                                           Get VM details                                  az vm show --resource-group MyRG --name MyVM                                                                                                               	
-                                                                                                                                                                                                                                                                                                	
-4. Storage Account &amp; Blob Storage                                                                                                                                                                                                                                                            	
-| Command | Description | Example |
-|---------|-------------|---------|                                                                                                                                                  	
-az storage account create                                                            Create a storage account                        az storage account create --name mystorageacc --resource-group MyRG --location eastus --sku Standard_LRS                                                   	
-az storage account list                                                              List storage accounts                           az storage account list --resource-group MyRG --output table                                                                                               	
-az storage container create                                                          Create a blob container                         az storage container create --account-name mystorageacc --name mycontainer                                                                                 	
-az storage blob upload                                                               Upload a file to blob storage                   az storage blob upload --account-name mystorageacc --container-name mycontainer --name myfile.txt --file ./local-file.txt                                  	
-az storage blob download                                                             Download a blob                                 az storage blob download --account-name mystorageacc --container-name mycontainer --name myfile.txt --file ./downloaded-file.txt                           	
-                                                                                                                                                                                                                                                                                                	
-5. Networking (VNet, NSG, Public IP, NIC)                                                                                                                                                                                                                                                        	
-| Command | Description | Example |
+azlogin|LogintoAzure|azlogin	
+azlogout|LogoutfromAzure|azlogout	
+azaccountlist|Listallsubscriptions|azaccountlist--outputtable|	
+azaccountset|Setactivesubscription|azaccountset--subscription"MySubscription"	
+azaccountshow|Showcurrentsubscriptiondetailsazaccountshow	
+	
+2.ResourceGroupManagement|	
+|Command|Description|Example|
+|---------|-------------|---------|	
+azgroupcreate|Createaresourcegroup|azgroupcreate--nameMyRG--locationeastus	
+azgrouplist|Listallresourcegroups|azgrouplist--outputtable|	
+azgroupdelete|Deletearesourcegroup|azgroupdelete--nameMyRG--yes|	
+azgroupshow|Showdetailsofaresourcegroupazgroupshow--nameMyRG|	
+	
+3.VMCpmmand	
+|Command|Description|Example|
+|---------|-------------|---------|	
+azvmcreate|CreateaVM|azvmcreate--resource-groupMyRG--nameMyVM--imageUbuntuLTS--admin-usernameazureuser--generate-ssh-keys|	
+azvmlist|ListallVMs|azvmlist--outputtable|	
+azvmstart|StartaVM|azvmstart--resource-groupMyRG--nameMyVM	
+azvmstop|StopaVM|azvmstop--resource-groupMyRG--nameMyVM	
+azvmdeallocate|DeallocateaVM(stop&amp;releaseresources)azvmdeallocate--resource-groupMyRG--nameMyVM	
+azvmrestart|RestartaVM|azvmrestart--resource-groupMyRG--nameMyVM	
+azvmdelete|DeleteaVM|azvmdelete--resource-groupMyRG--nameMyVM--yes	
+azvmshow|GetVMdetails|azvmshow--resource-groupMyRG--nameMyVM	
+	
+4.StorageAccount&amp;BlobStorage|	
+|Command|Description|Example|
+|---------|-------------|---------|	
+azstorageaccountcreateCreateastorageaccount|azstorageaccountcreate--namemystorageacc--resource-groupMyRG--locationeastus--skuStandard_LRS	
+azstorageaccountlistListstorageaccounts|azstorageaccountlist--resource-groupMyRG--outputtable	
+azstoragecontainercreateCreateablobcontainer|azstoragecontainercreate--account-namemystorageacc--namemycontainer|	
+azstorageblobuploadUploadafiletoblobstorageazstorageblobupload--account-namemystorageacc--container-namemycontainer--namemyfile.txt--file./local-file.txt|	
+azstorageblobdownloadDownloadablob|azstorageblobdownload--account-namemystorageacc--container-namemycontainer--namemyfile.txt--file./downloaded-file.txt|	
+	
+5.Networking(VNet,NSG,PublicIP,NIC)	
+|Command|Description|Example|
 |---------|-------------|---------|
 
-az network vnet create                                                               Create a virtual network (VNet)                 az network vnet create --resource-group MyRG --name MyVnet --address-prefix 10.0.0.0/16 --subnet-name MySubnet --subnet-prefix 10.0.0.0/24                 	
-az network nsg create                                                                Create a Network Security Group (NSG)           az network nsg create --resource-group MyRG --name MyNSG                                                                                                   	
-az network public-ip create                                                          Create a public IP                              az network public-ip create --resource-group MyRG --name MyPublicIP --allocation-method Dynamic                                                            	
-az network nic create                                                                Create a network interface (NIC)                az network nic create --resource-group MyRG --name MyNIC --vnet-name MyVnet --subnet MySubnet --network-security-group MyNSG                               	
-                                                                                                                                                                                                                                                                                                	
-6. Azure Kubernetes Service (AKS)                                                                                                                                                                                                                                                                	
-| Command | Description | Example |
-|---------|-------------|---------|                                                                                                                                                     	
-az aks create                                                                        Create an AKS cluster                           az aks create --resource-group MyRG --name MyAKSCluster --node-count 3 --generate-ssh-keys                                                                 	
-az aks get-credentials                                                               Get kubectl credentials                         az aks get-credentials --resource-group MyRG --name MyAKSCluster                                                                                           	
-az aks scale                                                                         Scale AKS nodes                                 az aks scale --resource-group MyRG --name MyAKSCluster --node-count 5                                                                                      	
-az aks delete                                                                        Delete an AKS cluster                           az aks delete --resource-group MyRG --name MyAKSCluster --yes                                                                                              	
-                                                                                                                                                                                                                                                                                                	
-7. Azure SQL Database                                                                                                                                                                                                                                                                            	
-| Command | Description | Example |
-|---------|-------------|---------|                                                                                                                                                     	
-az sql server create                                                                 Create a SQL Server                             az sql server create --resource-group MyRG --name mysqlserver --admin-user sqladmin --admin-password P@ssw0rd123 --location eastus                         	
-az sql db create                                                                     Create a SQL Database                           az sql db create --resource-group MyRG --server mysqlserver --name mydatabase --service-objective S0                                                       	
-az sql db list                                                                       List all databases                              az sql db list --resource-group MyRG --server mysqlserver                                                                                                  	
-az sql db delete                                                                     Delete a database                               az sql db delete --resource-group MyRG --server mysqlserver --name mydatabase --yes                                                                        	
-                                                                                                                                                                                                                                                                                                	
-8. Azure Web Apps (App Service)                                                                                                                                                                                                                                                                  	
-| Command | Description | Example |
-|---------|-------------|---------|                                                                                                                                                     	
-az webapp create                                                                     Create a web app                                az webapp create --resource-group MyRG --plan MyAppServicePlan --name MyWebApp --runtime "DOTNETCORE                                                       	
-az webapp list                                                                       List all web apps                               az webapp list --resource-group MyRG --output table                                                                                                        	
-az webapp deployment source config                                                   Connect to GitHub                               az webapp deployment source config --resource-group MyRG --name MyWebApp --repo-url https://github.com/user/repo.git --branch master --manual-integration  	
-az webapp delete                                                                     Delete a web app                                az webapp delete --resource-group MyRG --name MyWebApp                                                                                                     	
-                                                                                                                                                                                                                                                                                                	
-9. Azure Cosmos DB                                                                                                                                                                                                                                                                               	
-| Command | Description | Example |
-|---------|-------------|---------|                                                                                                                                                    	
-az cosmosdb create                                                                   Create a Cosmos DB account                      az cosmosdb create --name mycosmosdb --resource-group MyRG --kind MongoDB                                                                                  	
-az cosmosdb database create                                                          Create a database                               az cosmosdb database create --name mycosmosdb --resource-group MyRG --db-name mydb                                                                         	
-az cosmosdb collection create                                                        Create a collection                             az cosmosdb collection create --name mycosmosdb --resource-group MyRG --db-name mydb --collection-name mycollection                                        	
-                                                                                                                                                                                                                                                                                                	
-10. Azure Monitoring &amp; Logs                                                                                                                                                                                                                                                                  	
-| Command | Description | Example |
-|---------|-------------|---------|                                                                                                                                                     	
-az monitor activity-log list                                                         View activity logs                              az monitor activity-log list --resource-group MyRG --output table                                                                                          	
-az monitor metrics list                                                              Get VM metrics                                  az monitor metrics list --resource /subscriptions/{sub-id}/resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM --metric "Percentage CPU"  	
-                                                                                                                                                                                                                                                                                                	
-Format output as a table: Use --output table                                                                                                                                                                                                                                                     	
-Filter JSON output: Use --query (e.g., --query "[].{Name:name, Location:location}")                                                                                                                                                                                                              	
-Cpmmand                                                                                                                                                                                                                                                                                          	
-Get help: Append --help (e.g., az vm create --help)                                                                                                                                                                                                                                              	
+aznetworkvnetcreateCreateavirtualnetwork(VNet)aznetworkvnetcreate--resource-groupMyRG--nameMyVnet--address-prefix10.0.0.0/16--subnet-nameMySubnet--subnet-prefix10.0.0.0/24	
+aznetworknsgcreateCreateaNetworkSecurityGroup(NSG)aznetworknsgcreate--resource-groupMyRG--nameMyNSG	
+aznetworkpublic-ipcreateCreateapublicIP|aznetworkpublic-ipcreate--resource-groupMyRG--nameMyPublicIP--allocation-methodDynamic	
+aznetworkniccreateCreateanetworkinterface(NIC)aznetworkniccreate--resource-groupMyRG--nameMyNIC--vnet-nameMyVnet--subnetMySubnet--network-security-groupMyNSG|	
+	
+6.AzureKubernetesService(AKS)|	
+|Command|Description|Example|
+|---------|-------------|---------|	
+azakscreate|CreateanAKScluster|azakscreate--resource-groupMyRG--nameMyAKSCluster--node-count3--generate-ssh-keys	
+azaksget-credentialsGetkubectlcredentials|azaksget-credentials--resource-groupMyRG--nameMyAKSCluster	
+azaksscale|ScaleAKSnodes|azaksscale--resource-groupMyRG--nameMyAKSCluster--node-count5|	
+azaksdelete|DeleteanAKScluster|azaksdelete--resource-groupMyRG--nameMyAKSCluster--yes	
+	
+7.AzureSQLDatabase	
+|Command|Description|Example|
+|---------|-------------|---------|	
+azsqlservercreateCreateaSQLServer|azsqlservercreate--resource-groupMyRG--namemysqlserver--admin-usersqladmin--admin-passwordP@ssw0rd123--locationeastus|
+azsqldbcreate|CreateaSQLDatabase|azsqldbcreate--resource-groupMyRG--servermysqlserver--namemydatabase--service-objectiveS0	
+azsqldblist|Listalldatabases|azsqldblist--resource-groupMyRG--servermysqlserver	
+azsqldbdelete|Deleteadatabase|azsqldbdelete--resource-groupMyRG--servermysqlserver--namemydatabase--yes|	
+	
+8.AzureWebApps(AppService)|	
+|Command|Description|Example|
+|---------|-------------|---------|	
+azwebappcreate|Createawebapp|azwebappcreate--resource-groupMyRG--planMyAppServicePlan--nameMyWebApp--runtime"DOTNETCORE	
+azwebapplist|Listallwebapps|azwebapplist--resource-groupMyRG--outputtable	
+azwebappdeploymentsourceconfigConnecttoGitHub|azwebappdeploymentsourceconfig--resource-groupMyRG--nameMyWebApp--repo-urlhttps://github.com/user/repo.git--branchmaster--manual-integration	
+azwebappdelete|Deleteawebapp|azwebappdelete--resource-groupMyRG--nameMyWebApp	
+	
+9.AzureCosmosDB	
+|Command|Description|Example|
+|---------|-------------|---------|	
+azcosmosdbcreate|CreateaCosmosDBaccountazcosmosdbcreate--namemycosmosdb--resource-groupMyRG--kindMongoDB|	
+azcosmosdbdatabasecreateCreateadatabase|azcosmosdbdatabasecreate--namemycosmosdb--resource-groupMyRG--db-namemydb|	
+azcosmosdbcollectioncreateCreateacollection|azcosmosdbcollectioncreate--namemycosmosdb--resource-groupMyRG--db-namemydb--collection-namemycollection|	
+	
+10.AzureMonitoring&amp;Logs|	
+|Command|Description|Example|
+|---------|-------------|---------|	
+azmonitoractivity-loglistViewactivitylogs|azmonitoractivity-loglist--resource-groupMyRG--outputtable|	
+azmonitormetricslistGetVMmetrics|azmonitormetricslist--resource/subscriptions/{sub-id}/resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM--metric"PercentageCPU"	
+	
+Formatoutputasatable:Use--outputtable	
+FilterJSONoutput:Use--query(e.g.,--query"[].{Name:name,Location:location}")
+Cpmmand	
+Gethelp:Append--help(e.g.,azvmcreate--help)
