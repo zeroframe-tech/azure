@@ -27,5 +27,22 @@
         document.getElementById('content').innerHTML = marked.parse(text);
       });
   </script>
+
+<input type="text" id="search" placeholder="Search commands...">
+<script>
+  document.getElementById('search').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const rows = document.querySelectorAll('tr');
+    
+    rows.forEach(row => {
+      if (row.textContent.toLowerCase().includes(searchTerm)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
