@@ -1,0 +1,6 @@
+.github/ISSUE_TEMPLATE/config.yml
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Community Support
+    url: https://github.com/zeroframe-tech/azure/discussions
+    about: Ask the community for help
