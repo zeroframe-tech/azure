@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Command Reference</title>
   <link rel="stylesheet" href="styles.css">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Command Reference</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Dark theme styles */
+    .dark-theme {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+    .dark-theme header {
+      background-color: #121212;
+    }
+    .dark-theme input,
+    .dark-theme button {
+      background-color: #2d2d2d;
+      color: #ffffff;
+      border-color: #444;
+    }
+    .dark-theme #content code {
+      background-color: #2d2d2d;
+      color: #f8f8f8;
+    }
+    .dark-theme footer {
+      color: #aaa;
+    }
+  </style>
+</head>
+
 </head>
 <body>
   <div class="container">
@@ -46,5 +77,55 @@
       }
     });
   </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load and render markdown
+    fetch('commands.md')
+      .then(response => response.text())
+      .then(text => {
+        // Clean Jekyll front matter if exists
+        const cleanText = text.replace(/^---[\s\S]*?---/, '');
+        document.getElementById('content').innerHTML = marked.parse(cleanText);
+        initFeatures();
+      });
+    
+    // Set update date
+    document.getElementById('updateDate').textContent = new Date().toLocaleDateString();
+    
+    function initFeatures() {
+      // Search functionality
+      const searchInput = document.getElementById('search');
+      searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const content = document.getElementById('content');
+        const elements = content.querySelectorAll('*');
+        
+        let hasResults = false;
+        
+        elements.forEach(element => {
+          if (element.textContent.toLowerCase().includes(searchTerm)) {
+            element.style.display = '';
+            hasResults = true;
+          } else {
+            element.style.display = 'none';
+          }
+        });
+        
+        // If no results found, show a message
+        if (!hasResults && searchTerm.length > 0) {
+          content.innerHTML = `<p>No commands found matching "${searchTerm}"</p>`;
+        }
+      });
+      
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-theme');
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
