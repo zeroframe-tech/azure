@@ -159,10 +159,3 @@ Included Components:
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Recommended Next Steps:
-1. Create these additional files:
-   - LICENSE (MIT recommended)
-   - .github/ISSUE_TEMPLATE/ with templates
-   - .github/pull_request_template.md
-
-2. Add a CHANGELOG.md if you plan regular updates
